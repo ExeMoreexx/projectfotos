@@ -46,8 +46,8 @@ class ClienteController extends Controller
          if($foto->id>0){
 
             $cliente = DB::table('fotos')->where('client_id','=',$foto->id)->first();
-
-            if ($cliente->id>0) {
+            
+            if ($cliente!="") {
 
                 return redirect('cliente-foto/'.$request->correo);
 
@@ -56,6 +56,7 @@ class ClienteController extends Controller
                 return redirect()->back()->withErrors(['message' => 'Correo no cuenta con ninguna foto']);
 
             }
+
         } else{
 
             return redirect()->back()->withErrors(['message' => 'COrreo electrónico no encontrado']);   

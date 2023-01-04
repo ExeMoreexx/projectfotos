@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2023 a las 03:21:06
+-- Tiempo de generación: 04-01-2023 a las 23:32:11
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -45,7 +45,8 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `nombres`, `apellidos`, `direccion`, `telefono`, `correo_electronico`, `created_at`, `updated_at`) VALUES
 (1, 'Ex ea aut omnis ab n', 'Cum proident consec', 'Aliquip eius nesciun', '+1 (826) 693-1786', 'qykibuba@mailinator.com', '2022-12-30 21:14:48', '2022-12-30 21:14:48'),
 (2, 'Ad aliquip et sed la', 'Temporibus illo dele', 'Optio ullamco animi', '+1 (861) 323-7045', 'lawoqusap@mailinator.com', '2022-12-30 21:23:04', '2022-12-30 21:23:04'),
-(3, 'Incididunt quia ea c', 'Odio est commodi ip', 'Voluptatem Enim sin', '+1 (379) 868-4263', 'vilyki@mailinator.com', '2022-12-30 21:24:25', '2022-12-30 21:24:25');
+(3, 'Incididunt quia ea c', 'Odio est commodi ip', 'Voluptatem Enim sin', '+1 (379) 868-4263', 'vilyki@mailinator.com', '2022-12-30 21:24:25', '2022-12-30 21:24:25'),
+(4, 'miguel', 'angel', 'Totam vel hic porro', '+1 (578) 565-4416', 'lataxeca@mailinator.com', '2023-01-05 01:59:17', '2023-01-05 01:59:17');
 
 -- --------------------------------------------------------
 
@@ -73,6 +74,7 @@ CREATE TABLE `fotos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `client_id` bigint(20) UNSIGNED NOT NULL,
   `image` varchar(255) NOT NULL,
+  `precio` varchar(5) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -81,13 +83,34 @@ CREATE TABLE `fotos` (
 -- Volcado de datos para la tabla `fotos`
 --
 
-INSERT INTO `fotos` (`id`, `client_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 3, 'folder_fotos/FFihZfvTmZJlOpuJz6AeUGT6LpaBX2YcOvOb7gTv.jpg', NULL, NULL),
-(2, 3, 'folder_fotos/SUVJHpuXZaoKLUebFIeeyLAE4Jg51KqvPM49gM5p.jpg', NULL, NULL),
-(3, 3, 'folder_fotos/kallEQ3YkbggtkO05znX34CpJUNlQNYXwIsKceyr.jpg', NULL, NULL),
-(4, 3, 'public/Eta34BOxS3mcG2FG5D4VHH6hlJ8VoLLUETEGNYj3.jpg', NULL, NULL),
-(5, 3, 'public/wVktU3E8Tilf5DlS1J98yo0W4LwHtsGdfyX41SMO.jpg', NULL, NULL),
-(6, 3, 'public/gXAESNIRxUXbBe2Kta6zdMYN48TXzAG12jvXbxg7.jpg', NULL, NULL);
+INSERT INTO `fotos` (`id`, `client_id`, `image`, `precio`, `created_at`, `updated_at`) VALUES
+(1, 3, 'folder_fotos/FFihZfvTmZJlOpuJz6AeUGT6LpaBX2YcOvOb7gTv.jpg', '', NULL, NULL),
+(2, 3, 'folder_fotos/SUVJHpuXZaoKLUebFIeeyLAE4Jg51KqvPM49gM5p.jpg', '', NULL, NULL),
+(3, 3, 'folder_fotos/kallEQ3YkbggtkO05znX34CpJUNlQNYXwIsKceyr.jpg', '', NULL, NULL),
+(4, 3, 'public/Eta34BOxS3mcG2FG5D4VHH6hlJ8VoLLUETEGNYj3.jpg', '', NULL, NULL),
+(5, 3, 'public/wVktU3E8Tilf5DlS1J98yo0W4LwHtsGdfyX41SMO.jpg', '', NULL, NULL),
+(6, 3, 'public/gXAESNIRxUXbBe2Kta6zdMYN48TXzAG12jvXbxg7.jpg', '', NULL, NULL),
+(7, 2, 'public/w0HJ6CgPyNOinYae5uQwCWX3mhE2eqTzRakjJiy2.jpg', '', NULL, NULL),
+(8, 2, 'public/udpWHiKmfxpklDA5wFsaysrVMILzlpYXjtLSoBxy.jpg', '', NULL, NULL),
+(9, 2, 'public/9XmMpOKZ6g0jZIUEWkMrizjasKIQyNHrLD8NknVJ.jpg', '75', NULL, NULL),
+(10, 4, 'public/uoUAsmfgT8FEflAOIMDMdPt4weOlh23ds6nhvk0q.jpg', '$ 75', NULL, NULL),
+(11, 4, 'public/wzlt3MP3ubMHz2NuyWuNNLjzEQolI5oy4gQcAy5r.jpg', '$ 75', NULL, NULL),
+(12, 3, 'public/BeBG3AvFUoBI4HcBtsdb40rtf3o3P2c1y7cpj0l3.jpg', '$ 75', NULL, NULL),
+(13, 3, 'public/hmSmSwGQPDFtKJZkHGeL3fJP9Q1D7UDdGBCJwzBB.jpg', '$ 75', NULL, NULL),
+(14, 3, 'public/vowziMKQWQKbMWDODtRKqKhR8dNYs5UIXKK3Hdqo.jpg', '$ 75', NULL, NULL),
+(15, 3, 'public/N6jWNvwmlRDIJi9NgV3QTrJhQJvnetBf3wCy99ZK.jpg', '$ 75', NULL, NULL),
+(16, 3, 'public/O4kSgYqcfUwuROf5KgENkrMJemo2ZTVvb17sf6nD.jpg', '$ 75', NULL, NULL),
+(17, 3, 'public/OZJtl2rB44dLltZAnjQlItfqLu8dDWptwGTRmvw1.jpg', '$ 75', NULL, NULL),
+(18, 3, 'public/fVI8tZ14wtKsfH1lkm85wKCfvHmLduwAWqkmBmJx.jpg', '$ 75', NULL, NULL),
+(19, 3, 'public/96XKx5ewlmsMK0tJXkIi8zcpCplX6axzAfHceTFd.jpg', '$ 75', NULL, NULL),
+(20, 3, 'public/fz5dkA3okOjcszQJE0PNq0KFFbTLHkxmWTmvzPCW.jpg', '$ 75', NULL, NULL),
+(21, 3, 'public/V0sW5MtsOtTTjvnWFoWe18wJr8h9qseaQWKRudta.jpg', '$ 75', NULL, NULL),
+(22, 3, 'public/4fePbAzDs78mAmiZ8XH5NcMhquQDHMo98sZEkE4n.jpg', '$ 75', NULL, NULL),
+(23, 3, 'public/FsTg97XG3uLoBYNxw9qp0pDOhlmnAhEE9WRK82VD.jpg', '$ 75', NULL, NULL),
+(24, 3, 'public/nMwOkN7SMtQnCbotwhWR5D0mogvxsIP4x3CAGgpT.jpg', '$ 75', NULL, NULL),
+(25, 3, 'public/347ywhrl3scz5AenoHD0ZHzbGImGazFSXxVfSXup.jpg', '$ 75', NULL, NULL),
+(26, 2, 'public/xdFYdvfbxQiIbvsU3VrTiO1VP6h13zCD5SBRTDun.jpg', '$ 75', NULL, NULL),
+(27, 2, 'public/HsqzYzxtgyn2w6c9PLPF45wqHHq3S6pTxX9sAlSF.jpg', '$ 75', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +134,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_12_17_104529_create_clients_table', 2),
-(6, '2022_12_30_163058_create_table_fotos', 3);
+(6, '2022_12_30_163058_create_table_fotos', 3),
+(7, '2023_01_04_193846_add_precio_to_fotos', 4);
 
 -- --------------------------------------------------------
 
@@ -228,7 +252,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -240,13 +264,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `fotos`
 --
 ALTER TABLE `fotos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`

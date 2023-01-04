@@ -9,7 +9,7 @@ class foto extends Model
 {
     protected $table="fotos";
     use HasFactory;
-    protected $fillable = ['client_id', 'image'];
+    protected $fillable = ['client_id', 'image', 'precio'];
 
     /**
      * The attributes that should be hidden for serialization.

@@ -18,7 +18,7 @@ class FotosController extends Controller
      */
     public function index()
     {
-        $foto = DB::select('select f.id as fotoid,correo_electronico,nombres,apellidos,image,c.id as clienteid from clients c inner join fotos f on c.id=f.client_id');
+        $foto = DB::select('select f.id as fotoid,precio,correo_electronico,nombres,apellidos,image,c.id as clienteid from clients c inner join fotos f on c.id=f.client_id');
         return view('fotos.index', compact('foto'));
     }
 
@@ -27,10 +27,76 @@ class FotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_infantil()
     {
         $clientes = Clientes::all();
-        return view('fotos.create', compact('clientes'));
+        return view('fotos.infantil', compact('clientes'));
+    }
+
+    public function create_infantil_larga()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.infantil_larga', compact('clientes'));
+    }
+
+    public function create_credencial()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.credencial', compact('clientes'));
+    }
+
+    public function create_cartilla()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.cartilla', compact('clientes'));
+    }
+
+    public function create_credencial_larga()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.credencial_larga', compact('clientes'));
+    }
+
+    public function create_ovalo_credencial()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.ovalo_credencial', compact('clientes'));
+    }
+
+    public function create_pasaporte()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.pasaporte', compact('clientes'));
+    }
+
+    public function create_visa()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.visa', compact('clientes'));
+    }
+
+    public function create_patente_visita()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.patente_visita', compact('clientes'));
+    }
+
+    public function create_ovalo_diploma()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.ovalo_diploma', compact('clientes'));
+    }
+
+    public function create_ovalo_titulo()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.ovalo_titulo', compact('clientes'));
+    }
+
+    public function create_postal()
+    {
+        $clientes = Clientes::all();
+        return view('fotos.postal', compact('clientes'));
     }
 
     /**
@@ -39,7 +105,7 @@ class FotosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_infantil(Request $request)
     {
         $foto = request()->except('_token');
 
@@ -50,8 +116,173 @@ class FotosController extends Controller
             }
         }
 
+        $id=$request->client_id;
+        return view('fotos.infantil_larga',compact('id'));
+    }
 
-        return redirect()->route('fotos.index');
+    public function store_infantil_larga(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.credencial',compact('id'));
+    }
+
+    public function store_credencial(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.cartilla',compact('id'));
+    }
+
+    public function store_cartilla(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.credencial_larga',compact('id'));
+    }
+
+    public function store_credencial_larga(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.ovalo_credencial',compact('id'));
+    }
+
+    public function store_ovalo_credencial(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.pasaporte',compact('id'));
+    }
+
+    public function store_pasaporte(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.visa',compact('id'));
+    }
+
+    public function store_visa(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.patente_visita',compact('id'));
+    }
+
+    public function store_patente_visita(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.ovalo_diploma',compact('id'));
+    }
+
+    public function store_ovalo_diploma(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.ovalo_titulo',compact('id'));
+    }
+
+    public function store_ovalo_titulo(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.postal',compact('id'));
+    }
+
+    public function store_postal(Request $request)
+    {
+        $foto = request()->except('_token');
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imagen) {
+                $foto['image'] = $imagen->store('public');
+                Foto::insert($foto);
+            }
+        }
+
+        $id=$request->client_id;
+        return view('fotos.index',compact('id'));
     }
 
     /**
@@ -118,5 +349,12 @@ class FotosController extends Controller
         }
 
         return redirect('fotos');
+    }
+    public function verPrecio($id){
+        
+        $foto = DB::select('select * from fotos where id=?',[$id]);
+
+        return response()->json($foto);
+        
     }
 }

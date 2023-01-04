@@ -4,14 +4,12 @@
 
 @section('content')
 
-<p class="text-center fs-1 fw-bold mt-5">Admin</p>
+<p class="text-center fs-1 fw-bold mt-5">Clientes</p>
 
 <div class="card m-sm-auto" style="width: 70rem">
     <h5 class="card-header">
         <div class="d-flex flex-row-reverse">
             <a id="boton-agg" href="{{ route('clientes.create') }}" class="btn mt-1 mx-2 fw-bold" role="button"><i class="bi bi-plus-circle me-3"></i>Agregar</a>
-            <a id="boton-clientes" href="{{ route('clientes.index') }}" class="btn mt-1 mx-2 fw-bold" role="button"><i class="bi bi-people-fill me-3"></i>Clientes</a>
-            <a id="boton-fotos" href="" class="btn btn-outline-primary mt-1 mx-2 fw-bold" role="button"><i class="bi bi-images me-3"></i>Fotos</a>
           </div>
     </h5>
     <div class="card-body">

@@ -20,6 +20,16 @@
             transition: 1s ease all;
         }
 
+        #boton-agg {
+          color: #fff;
+          background-color: #843cf8;
+        }
+
+        #boton-agg:hover {
+            background-color: #7021f0;
+            transition: 1s ease all;
+        }
+
     </style>
     <title>@yield('title') | Laravel App</title>
 </head>
@@ -36,15 +46,15 @@
             
             @if(auth()->user()->role=="admin")          
             <li class="nav-item">
-              <a class="btn fw-bold" href="{{ route('fotos.index') }}" role="button">Fotos</a>
+              <a class="btn btn-dark fw-bold me-2 text-light" href="{{ route('fotos.index') }}" role="button">Fotos</a>
             </li>
             @else
             @endif
             <li class="nav-item">
-              <a class="btn btn-danger fw-bold" href="{{ route('login.destroy') }}" role="button">Log Out</a>
+              <a class="btn btn-danger fw-bold me-2" href="{{ route('login.destroy') }}" role="button">Log Out</a>
             </li>
             <li class="nav-item">
-              <p class="me-3 fw-bold mt-2" style="color: #fff;">Welcome {{ auth()->user()->name }}</p>
+              <p class="me-3 fw-bold mt-2 text-light">Welcome {{ auth()->user()->name }}</p>
             </li>
           </ul>              
           @else
@@ -59,10 +69,26 @@
           @endif
         </div>
       </nav>
-
+      
     @yield('content')
 
     {{-- Bootstrap JavaScrip --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      const app=new Vue({
+        el: "#element",
+        data:{
+              precio:""
+        },
+        methods:{
+              add(){
+                  this.axios.get('http://localhost:8000/')
+              }
+        }
+    
+      })
+    </script>
+
 </body>
 </html>
