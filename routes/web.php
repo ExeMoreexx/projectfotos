@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FotosController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('home');
@@ -42,8 +43,11 @@ Route::get('/clientes/create', [ClientesController::class, 'create'])
 Route::post('/clientes', [ClientesController::class, 'store'])
     ->name('clientes.store');
 
-Route::get('/clientes/edit', [ClientesController::class, 'edit'])
+Route::get('/clientes/edit/{id}', [ClientesController::class, 'edit'])
     ->name('clientes.edit');
+
+Route::delete('/clientes/delete/{id}', [ClientesController::class, 'destroy'])
+    ->name('clientes.destroy');
 
 Route::get('/fotos', [FotosController::class, 'index'])
     ->name('fotos.index');
@@ -51,8 +55,11 @@ Route::get('/fotos', [FotosController::class, 'index'])
 Route::get('/ver-foto/{id}', [FotosController::class, 'show'])
     ->name('fotos.show');
 
-Route::get('/fotos/edit', [FotosController::class, 'edit'])
+Route::get('/fotos/edit/{id}', [FotosController::class, 'edit'])
     ->name('fotos.edit');
+
+Route::delete('/fotos/delete/{id}', [FotosController::class, 'destroy'])
+    ->name('fotos.destroy');
 
 Route::get('/cliente', [ClienteController::class, 'index'])
     ->name('cliente.index');
@@ -114,7 +121,7 @@ Route::post('/guardar-foto-visa', [FotosController::class, 'store_visa'])
 Route::get('/fotos/patente-visita/{id}', [FotosController::class, 'create_patente_visita'])
     ->name('fotos.create_patente_visita');
 
-Route::post('/guardar-foto-visa', [FotosController::class, 'store_patente_visita'])
+Route::post('/guardar-foto-patente-visita', [FotosController::class, 'store_patente_visita'])
     ->name('fotos.store_patente_visita');
 
 Route::get('/fotos/ovalo-diploma/{id}', [FotosController::class, 'create_ovalo_diploma'])
@@ -131,9 +138,12 @@ Route::post('/guardar-foto-ovalo-titulo', [FotosController::class, 'store_ovalo_
 
 Route::get('/fotos/postal/{id}', [FotosController::class, 'create_postal'])
     ->name('fotos.create_postal');
-    
-Route::get('/fotos/ver-precio/{id}', [FotosController::class, 'verPrecio'])
-    ->name('fotos.verPrecio');
 
 Route::post('/guardar-foto-postal', [FotosController::class, 'store_postal'])
     ->name('fotos.store_postal');
+
+Route::get('/fotos/ver-precio/{id}', [FotosController::class, 'verPrecio'])
+    ->name('fotos.verPrecio');
+
+Route::get('/carrito/{id}', [CartController::class, 'addCart'])
+    ->name('cart.add');

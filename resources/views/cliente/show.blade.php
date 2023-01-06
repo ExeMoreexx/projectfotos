@@ -8,8 +8,12 @@
 
       <div class="col-md-8">
 @foreach ($foto as $fotos)
-        <span class="ms-3"><img src="/storage/{{$fotos->image}}" alt="" width="200"></span>
-        <button class="btn btn-primary" @click="add()">Agregar</button>
+<form action="{{ route('cart.add', $fotos->id) }}">
+                <span class="ms-3">
+                        <img src="/storage/{{$fotos->image}}" alt="" width="200">
+                </span>
+        <button class="btn btn-primary" type="submit">Agregar</button>
+</form>
 @endforeach
 </div>
 <div class="col-md-4">s</div>

@@ -7,9 +7,9 @@
 <div class="card shadow-lg p-3 mb-5 bg-body rounded position-relativ position-absolute top-50 start-50 translate-middle" style="width: 28rem; border: none">
     <div class="card-body">
         <p class="text-center fs-1 fw-bold">Editar Cliente {{ $cliente->id }}</p>
-        <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+        <form action="{{ route('clientes.edit', $cliente->id) }}" method="POST">
             @csrf
-            @method('put')
+            {{ method_field('PATCH') }}
           <div class="input-group mb-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" value="{{ $cliente->nombres }}">

@@ -43,18 +43,21 @@
           </button>
           @if (auth()->check() )
           <ul class="navbar-nav mt-2 mb-0">
-            
+            <li class="nav-item">
+              <label class="me-1 fw-bold mt-2 mb-3 text-warning">Usuario:</label>
+              <label class="me-3 fw-bold text-light">{{ auth()->user()->name }}</label>
+            </li>
             @if(auth()->user()->role=="admin")          
             <li class="nav-item">
               <a class="btn btn-dark fw-bold me-2 text-light" href="{{ route('fotos.index') }}" role="button">Fotos</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-dark fw-bold me-2 text-light" href="{{ route('clientes.index') }}" role="button">Clientes</a>
             </li>
             @else
             @endif
             <li class="nav-item">
               <a class="btn btn-danger fw-bold me-2" href="{{ route('login.destroy') }}" role="button">Log Out</a>
-            </li>
-            <li class="nav-item">
-              <p class="me-3 fw-bold mt-2 text-light">Welcome {{ auth()->user()->name }}</p>
             </li>
           </ul>              
           @else

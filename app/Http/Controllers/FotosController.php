@@ -309,7 +309,7 @@ class FotosController extends Controller
     {
         $clientes = Clientes::all();
 
-        $foto = Foto::findOrFail($id);
+        $foto = Foto::find($id);
 
         return view('fotos.edit', compact('foto', 'clientes'));
     }
@@ -331,7 +331,8 @@ class FotosController extends Controller
 
         Foto::where('id', '=', $id)->update($data);
 
-        return redirect('fotos');
+        return redirect()->route('fotos.index');
+
     }
 
     /**
@@ -350,11 +351,12 @@ class FotosController extends Controller
 
         return redirect('fotos');
     }
+    
     public function verPrecio($id){
         
         $foto = DB::select('select * from fotos where id=?',[$id]);
 
         return response()->json($foto);
-        
+
     }
 }

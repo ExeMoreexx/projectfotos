@@ -42,9 +42,9 @@
             <td>{{ $row->created_at }}</td>
             <td>{{ $row->updated_at }}</td>
             <td><a href="{{ route('clientes.edit', $row->id) }}" class="btn btn-success" role="button" type="submit"><i class="bi bi-pencil-fill"></i></a></td>
-            <form action="#" method="POST">
+            <form action="{{ route('clientes.destroy', $row->id) }}" method="POST">
                 @csrf
-                @method('delete')
+                {{ method_field('DELETE') }}
                 <td><button class="btn btn-danger"><i class="bi bi-trash3"></i></button></td>
             </form>
           </tr>
